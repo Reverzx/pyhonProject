@@ -5,8 +5,8 @@ import time
 
 
 class TestElements(driver):
-    def test(self, driver):
-        page = AuthorizathionPage(driver, "https://devadmin.aula.city/login")
-        page.open()
+    def test_text_box(self, driver):
+        text_box_page = AuthorizathionPage(driver, "https://devadmin.aula.city/login")
+        text_box_page.open()
         time.sleep(5)
 
