@@ -5,12 +5,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait as wait
-
-
-
-
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.ui import WebDriverWait as Wait
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.page_load_strategy = 'normal'
@@ -19,22 +15,22 @@ chrome_options.add_argument('--window-size=1920,1080')
 service = Service()
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-
-#open page
+# open page
 driver.get("https://stepik.org/lesson/236895/step/1")
 time.sleep(5)
 
-#autorization
-autorization_field = driver.find_element(By.XPATH, '//a[@id="ember459"]')
-autorization_field.click().until(EC.visibility_of_element_located(By.XPATH, '//a[@id="ember459"]'))
+# autorization
+# autorization_field = driver.find_element(By.XPATH, '//a[@id="ember459"]')
+# autorization_field.click().until(EC.visibility_of_element_located(By.XPATH, '//a[@id="ember459"]'))
+WebDriverWait(driver, 10).until(ec.visibility_of_element_located((By.XPATH, '//a[@id="ember459"]'))).click()
 
 email_field = driver.find_element(By.XPATH, '//input[@id="id_login_email"]')
 email_field.send_keys('Rixed@yandex.ru')
-#Ввод_пароля
+# Ввод_пароля
 password_field = driver.find_element(By.XPATH, "//input[@name='password']")
 password_field.send_keys('w35c8XM_FsF!V#J')
 
-#Вход в систему
+# Вход в систему
 enter_in_system = driver.find_element(By.XPATH, '//button[@type="submit"]')
 enter_in_system.click()
 
@@ -89,4 +85,3 @@ except NoSuchElementException:
     print("Test.py failed")
 
 """
-
